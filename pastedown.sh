@@ -2,7 +2,8 @@
 
 function download {
     set -uo pipefail
-    mkdir -p "$HOME/Documents/dotties" &> /dev/null
+    # Create the directory if it doesn't exist
+    mkdir -p $HOME/Documents/dotties &> /dev/null
 
     declare -A urls=(
          [config.fish]="https://pastebin.com/BZ8j6NBC"
@@ -25,11 +26,12 @@ function download {
 function place {
 fishloc="$HOME/.config/fish/"
 cd $HOME/Documents/dotties/
-
-cp -v config.fish $fishloc
-cp -v aliases.fish $fishloc/conf.d/
-cp -v zoxide.fish $fishloc/conf.d/
-cp -v env.fish $fishloc/conf.d/
+echo "copying files..."
+echo " "
+cp -vf config.fish $fishloc
+cp -vf aliases.fish $fishloc/conf.d/
+cp -vf zoxide.fish $fishloc/conf.d/
+cp -vf env.fish $fishloc/conf.d/
 
 }
 
