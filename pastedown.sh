@@ -43,7 +43,7 @@ cp -vf env.fish $fishloc/conf.d/
 }
 
 function fisher {
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+curl -sL "https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish" | source && fisher install jorgebucaran/fisher
 
 fisher install jorgebucaran/fisher
 fisher install patrickf1/fzf.fish
