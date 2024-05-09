@@ -1,0 +1,116 @@
+#
+# Personal
+#
+abbr clear 'clear; echo; echo; seq 1 $(tput cols) | sort -R | spark; echo; echo'
+# quick switch to dirs
+abbr desk "cd ~/Desktop"
+abbr down "cd ~/Downloads" 
+
+# quick edits to dot files
+abbr aliases 'micro ~/.config/fish/conf.d/aliases.fish'
+abbr funcs 'micro ~/.config/fish/functions/'
+
+abbr fishconfig 'micro ~/.config/fish/conf.fish'
+
+#
+# System/General
+#
+
+abbr p "pwd"
+abbr c 'clear'
+
+abbr .. 'cd ..' # up one
+abbr .... 'cd ../..' # up two
+abbr ...... 'cd ../../..' # up three (that's enough)
+abbr cdd 'cd -' # back
+
+abbr lns "ln -s" # symlink in 2 less characters
+abbr mkdirp 'mkdir -p' # auto nesting
+abbr duh 'du -h' # list disk usage for all files in ./
+abbr dush 'du -sh' # list total disk usage of ./
+abbr chx 'chmod +x' # make it executable
+abbr chR 'chmod -R' # recursive
+
+# archives
+abbr tgz 'tar -xvzf' # extract .tar.gz
+abbr tbz 'tar -xvjf' # extract .tar.bz2
+
+# system aliases()
+abbr zzz 'sudo shutdown -s now'
+abbr reboot 'sudo shutdown -r now'
+abbr off 'sudo shutdown -h now'
+
+abbr less "less -MNi" # file info/position, line #'s, smart case
+
+# copy current path to system clipboard
+abbr cwd "pwd | eval $CLIPBOARD"
+
+abbr tr "tree -C -L 1" # show a quick tree of files
+abbr tra 'tree -C -a -L 1' # also list hidden files (think "list all")
+
+# https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
+abbr ssh 'env TERM=xterm-256color ssh'
+
+#
+# Extra
+#
+
+# tmux
+
+# ranger
+abbr r "ranger"
+
+# docker
+
+
+# misc
+abbr lmk "say 'Process complete.'" # pin to the tail of long commands
+
+abbr m "math" # quick calculations in the terminal
+
+#
+# Bling
+#
+
+abbr starwars "telnet towel.blinkenlights.nl"
+abbr matrix "cmatrix -a"
+
+
+#
+# Network Info
+#
+
+abbr localip "ipconfig getifaddr en1"
+abbr ips "ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ and print $1'"
+abbr myip "curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
+abbr sniff "sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+abbr httpdump "sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+abbr nameservers 'host -t ns'
+
+#
+# extra
+#
+
+# URL encode/decode
+abbr urlencode 'python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
+abbr urldecode 'python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
+
+
+# jekyll
+abbr jek 'jekyll'
+abbr jekb 'jekyll build'
+abbr jekbw 'jekyll build --watch'
+abbr jeks 'jekyll serve'
+abbr jeksw 'jekyll serve --watch'
+
+# youtube-dl | http://rg3.github.io/youtube-dl/
+abbr ytdl 'youtube-dl'
+abbr ytmp3 'youtube-dl --extract-audio --audio-format mp3'
+abbr ytaudio 'youtube-dl --extract-audio'
+
+# exiftool
+abbr exiftime "exiftool -time:all -s" # show all time attrs
+abbr exifval "exiftool -s -s -s" # just print value(s)
+
+

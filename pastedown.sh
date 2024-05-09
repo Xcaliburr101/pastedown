@@ -6,14 +6,15 @@ set -euo pipefail
 declare -A urls=(
     [aliases]="https://pastebin.com/0kPtr0QV"
     [bashrc]="https://pastebin.com/WMmk7Cc0"
-    [config]="https://pastebin.com/BZ8j6NBC"
-    [fish-env]="https://pastebin.com/8yReRyaa"
-    [fishconfig]="https://pastebin.com/BZ8j6NBC"
+    [config.fish]="https://pastebin.com/BZ8j6NBC"
+    [env.fish]="https://pastebin.com/8yReRyaa"
 )
 
-for key in "${!urls[@]}"; do
-    echo "Downloading $key..."
-    pastebin get "${urls[$key]}"
+for url in "${!urls[@]}"; do
+    echo "Downloading $url..."
+        pastebin get "${urls[$url]}" > ".$url"
+    echo "file created .$url"
+    echo ""
 done
 
 
