@@ -1,9 +1,11 @@
 #!/bin/bash
 function pastebin-cli {
 echo "installing pipx & pastebin-cli..."
-pip install pipx
+which pipx
+if [ $? -eq 1 ]; then
+       pip install pipx
 pipx install pastebin-cli && echo "done"
-
+fi
 }
 
 
@@ -31,24 +33,27 @@ function download {
 }
 
 function place {
-fishloc="$HOME/.config/fish/"
-cd $HOME/Documents/dotties/
-echo "copying files..."
-echo " "
-cp -vf config.fish $fishloc
-cp -vf aliases.fish $fishloc/conf.d/
-cp -vf zoxide.fish $fishloc/conf.d/
-cp -vf env.fish $fishloc/conf.d/
-
+    fishloc="$HOME/.config/fish/"
+    cd $HOME/Documents/dotties/
+    echo "copying files..."
+    echo " "
+    cp -vf config.fish $fishloc
+    cp -vf aliases.fish $fishloc/conf.d/
+    cp -vf zoxide.fish $fishloc/conf.d/
+    cp -vf env.fish $fishloc/conf.d/
+    cd $HOME
 }
 
 function fisher {
-curl -sL "https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish" | source && fisher install jorgebucaran/fisher
-
-fisher install jorgebucaran/fisher
-fisher install patrickf1/fzf.fish
-fisher install jorgebucaran/spark.fish
-fisher install IlanCosman/tide@v6
+    if [ ! -f "$HOME/.config/fish/fish_plugins" ]; then
+        curl -sL "https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish" | fish
+    fi
+    echo "installing plugins"
+    fish -c "fisher install patrickf1/fzf.fish"
+    fish -c "fisher install jorgebucaran/spark.fish"
+    fish -c "fisher install IlanCosman/tide@v6"
+    echo "currently installed:"
+    fish -c "fisher list"
 }
 
 #fire
