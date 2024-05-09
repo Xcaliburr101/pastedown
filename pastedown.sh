@@ -1,10 +1,10 @@
 #!/bin/bash
 
-set -euo pipefail
+set -uo pipefail
 #set error handling
 
 declare -A urls=(
-    [aliases]="https://pastebin.com/0kPtr0QV"
+    [aliases.fish]="https://pastebin.com/0kPtr0QV"
     [bashrc]="https://pastebin.com/WMmk7Cc0"
     [config.fish]="https://pastebin.com/BZ8j6NBC"
     [env.fish]="https://pastebin.com/8yReRyaa"
@@ -12,11 +12,7 @@ declare -A urls=(
 
 for url in "${!urls[@]}"; do
     echo "Downloading $url..."
-        pastebin get "${urls[$url]}" > ".$url"
-    echo "file created .$url"
-    echo ""
+    mkdir -p dotties &> /dev/null
+    pastebin get "${urls[$url]}" > "dotties/.$url"
+    echo "saved file to .$url"
 done
-
-
-
-
